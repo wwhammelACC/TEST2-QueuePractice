@@ -37,11 +37,40 @@ Queue::~Queue() {
 }
 
 // Utility function to add an item to the queue aka PUSH
+bool Queue::enqueue(int id, std::string *str) {
+    bool flag = false;
+    cout << "Tesint initial enqueue " << endl;
+    return flag;
+}
 
 // Utility function to dequeue the front element aka POP
+bool Queue::dequeue(Data *ref) {
+    bool flag = false;
+    cout << "Tesint initial dequeue " << endl;
+    return flag;
+}
 
 // Utility function to return the front element of the queue aka PEEK
+//PEEK METHOD/FUNCTION
+bool Queue::peek(Data *ref) {
+    bool peek = false;
+    if(!isEmpty()){     // if not empty
+        //getting info from top of stack and putting it in data struct
+        ref->id = queue[top]->id;
+        ref->information = queue[top]->information;
+        //'return data to caller'
+        peek = true;
+    }else{
+        //fill passed data struct with -1, empty string
+        ref->id = -1;
+        ref->information = "";
+    }
+    return peek;
+}
+// Utility function to check if the queue is empty or not
+//ISEMPTY METHOD/FUNCTION
+bool Queue::isEmpty(){
+    return top < 0;
+}
 
 // Utility function to return the size of the queue
-
-// Utility function to check if the queue is empty or not
