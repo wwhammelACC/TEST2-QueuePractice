@@ -18,7 +18,7 @@
 //Size: Returns the total number of elements present in the queue.
 
 Queue::Queue(int userSize) {
-
+    front = 0;
     top = -1;
     if (userSize >= DEFAULT) {
         size = userSize;
@@ -60,6 +60,21 @@ bool Queue::enqueue(int id, std::string *str) {
 bool Queue::dequeue(Data *ref) {
     bool flag = false;
     std::cout << "Testing initial dequeue " << std::endl;
+    if(!isEmpty()){     // if not empty
+        //getting info from top of stack and putting it in data struct
+        ref->id = queue[top]->id;
+        ref->information = queue[top]->information;
+        //delete allocated memory
+        delete queue[top];
+        //decrement stack
+        top = (0 + 1) % size;
+        top--;
+        flag = true;
+    }else{
+        //fill passed data struct with -1, empty string
+        ref->id = -1;
+        ref->information = "";
+    }
     return flag;
 }
 
