@@ -12,6 +12,7 @@
  */
 
 #include "data.h"
+#define DEFAULT 2
 
 class Queue {
 
@@ -26,9 +27,15 @@ public:
     //destructor
     ~Queue();
 
-    bool push(int, string*);
+// from stack.cpp
+//    bool push(int, string*);
+//    bool peek(Data*);
+//    bool pop(Data*);
+//    bool isEmpty();
+
+    bool enqueue(int, string*); //push
+    bool dequeue(Data*); //pop
     bool peek(Data*);
-    bool pop(Data*);
     bool isEmpty();
     
 private:
