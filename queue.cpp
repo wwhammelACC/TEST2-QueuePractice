@@ -58,21 +58,19 @@ bool Queue::enqueue(int id, std::string *str) {
 bool Queue::dequeue(Data *ref) {
     bool flag = false;
     std::cout << "Testing initial dequeue " << std::endl;
-//    if(!isEmpty()){     // if not empty
-//        //getting info from top of stack and putting it in data struct
-//        ref->id = queue[top]->id;
-//        ref->information = queue[top]->information;
-//        //delete allocated memory
-//        delete queue[top];
-//        //decrement stack
-//        top = (top + 1) % size;
-//        top--;
-//        flag = true;
-//    }else{
-//        //fill passed data struct with -1, empty string
-//        ref->id = -1;
-//        ref->information = "";
-//    }
+    if(!isEmpty()) {     // if not empty
+        //getting info from top of stack and putting it in data struct
+        ref->id = queue[front]->id;
+        ref->information = queue[front]->information;
+        delete queue[front];
+        front = (front+1) % size; //have to change front here to step through it
+        count--;
+        flag = true;
+    }else{
+        //fill passed data struct with -1, empty string
+        ref->id = -1;
+        ref->information = "";
+    }
     return flag;
 }
 
@@ -82,8 +80,8 @@ bool Queue::peek(Data *ref) {
     bool peek = false;
     if(!isEmpty()){     // if not empty
         //getting info from top of stack and putting it in data struct
-        ref->id = queue[back]->id;
-        ref->information = queue[back]->information;
+        ref->id = queue[front]->id;
+        ref->information = queue[front]->information;
         //'return data to caller'
         peek = true;
     }else{
