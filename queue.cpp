@@ -41,7 +41,6 @@ Queue::~Queue() {
 // Utility function to add an item to the queue aka PUSH
 bool Queue::enqueue(int id, std::string *str) {
     bool flag = false;
-    std::cout << "Testing initial enqueue " << std::endl;
     if(!isFull() && (id > 0) && (!str->empty())){
         //allocate data structure
         back = (back + 1) % size;
@@ -57,7 +56,6 @@ bool Queue::enqueue(int id, std::string *str) {
 // Utility function to dequeue the front element aka POP
 bool Queue::dequeue(Data *ref) {
     bool flag = false;
-    std::cout << "Testing initial dequeue " << std::endl;
     if(!isEmpty()) {     // if not empty
         //getting info from top of stack and putting it in data struct
         ref->id = queue[front]->id;
