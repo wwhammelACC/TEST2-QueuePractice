@@ -39,14 +39,27 @@ Queue::~Queue() {
 // Utility function to add an item to the queue aka PUSH
 bool Queue::enqueue(int id, std::string *str) {
     bool flag = false;
-    cout << "Testing initial enqueue " << endl;
+    std::cout << "Testing initial enqueue " << std::endl;
+    if (top < size - 1) {
+        if(id > 0 && !str->empty()){
+            // pointer to data struct
+            Data *myData;
+            //allocate data structure
+            myData = new Data;
+            myData->id = (id);
+            myData->information = *str;
+            top = (top + 1) % size;
+            queue[++top] = myData;
+            flag = true;
+        }
+    }
     return flag;
 }
 
 // Utility function to dequeue the front element aka POP
 bool Queue::dequeue(Data *ref) {
     bool flag = false;
-    cout << "Testing initial dequeue " << endl;
+    std::cout << "Testing initial dequeue " << std::endl;
     return flag;
 }
 
