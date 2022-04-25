@@ -3,8 +3,8 @@
  * 
  */
 
-#ifndef STACKS_MAIN_H
-#define STACKS_MAIN_H
+#ifndef QUEUES_MAIN_H
+#define QUEUES_MAIN_H
 
 // you probably need all these,
 // but if you don't get rid of what you don't need
@@ -18,6 +18,13 @@
  * additional directives here
  * 
  */
+// adding queue.h
+#include "queue.h"
+// adding multiplier
+#define MULTIPLIER 1.5 // used to test overflow and underflow
+#define RANDOM_MULTIPLIER 10 // for random testing
+#define CHOICES 6 // used to pick random operations
 
 
-#endif /* STACKS_MAIN_H */
+
+#endif /* QUEUES_MAIN_H */
