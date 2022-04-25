@@ -39,14 +39,14 @@ Queue::~Queue() {
 // Utility function to add an item to the queue aka PUSH
 bool Queue::enqueue(int id, std::string *str) {
     bool flag = false;
-    cout << "Tesint initial enqueue " << endl;
+    cout << "Testing initial enqueue " << endl;
     return flag;
 }
 
 // Utility function to dequeue the front element aka POP
 bool Queue::dequeue(Data *ref) {
     bool flag = false;
-    cout << "Tesint initial dequeue " << endl;
+    cout << "Testing initial dequeue " << endl;
     return flag;
 }
 

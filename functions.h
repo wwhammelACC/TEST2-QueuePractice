@@ -3,8 +3,8 @@
  * modify this file as needed to complete the assignment
  */
 
-#ifndef STACKS_FUNCTIONS_H
-#define STACKS_FUNCTIONS_H
+#ifndef QUEUES_FUNCTIONS_H
+#define QUEUES_FUNCTIONS_H
 
 #define MAXSTRSIZE 8
 
@@ -18,4 +18,4 @@ void rand_string(std::string*);
 bool is_positive_integer(char*);
 
 
-#endif /* STACKS_FUNCTIONS_H */
+#endif /* QUEUES_FUNCTIONS_H */
