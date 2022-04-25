@@ -18,7 +18,6 @@
 //Size: Returns the total number of elements present in the queue.
 
 Queue::Queue(int userSize) {
-    front = 0;
     top = -1;
     if (userSize >= DEFAULT) {
         size = userSize;
@@ -67,7 +66,7 @@ bool Queue::dequeue(Data *ref) {
         //delete allocated memory
         delete queue[top];
         //decrement stack
-        top = (0 + 1) % size;
+        top = (top + 1) % size;
         top--;
         flag = true;
     }else{
