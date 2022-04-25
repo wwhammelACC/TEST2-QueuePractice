@@ -27,3 +27,25 @@ void rand_string(std::string *str){
     return;
 }
 
+// only digits taken from program fund 2 arrays project
+bool is_positive_integer(char* onlyDigits)
+{
+    int i = 0;
+    bool result = true;
+    while((onlyDigits[i]) != '\0')
+    {
+        if(!isdigit(onlyDigits[i])) // if not digit false
+        {
+            result = false;
+        }
+        i++;
+    }
+    if(result == true)
+    {
+        if(atoi(onlyDigits) <= 0)
+        {
+            result = false;
+        }
+    }
+    return result;
+}

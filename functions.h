@@ -15,4 +15,7 @@
 
 void rand_string(std::string*);
 
+bool is_positive_integer(char*);
+
+
 #endif /* STACKS_FUNCTIONS_H */
