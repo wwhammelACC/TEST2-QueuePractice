@@ -13,6 +13,10 @@
 
 #include "data.h"
 #define DEFAULT 2
+#include <iostream>   /* cout, endl */
+using std::cout;
+using std::endl;
+
 
 class Queue {
 
