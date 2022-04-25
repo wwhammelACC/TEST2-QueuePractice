@@ -41,6 +41,8 @@ public:
     bool dequeue(Data*); //pop
     bool peek(Data*);
     bool isEmpty();
+    bool isFull();
+    int getCount();
     
 private:
 
@@ -50,6 +52,8 @@ private:
 
     // these are the only attributes you need.
     // do not modify them or add any other attributes
+    int count;
+    int back;
     int front;
     int top;
     int size;

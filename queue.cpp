@@ -18,7 +18,9 @@
 //Size: Returns the total number of elements present in the queue.
 
 Queue::Queue(int userSize) {
-    top = -1;
+    count = 0;
+    back = -1;
+    front = 0;
     if (userSize >= DEFAULT) {
         size = userSize;
     } else {
@@ -29,28 +31,25 @@ Queue::Queue(int userSize) {
 
 
 Queue::~Queue() {
-    for(int i=top; i>=0; i--){
-        delete queue[i];
+    if(isEmpty() == false){
+        delete queue[front];
+        front = (front+1) % size;
+        count--;
     }
-    delete[] queue; // goes in destructor
 }
 
 // Utility function to add an item to the queue aka PUSH
 bool Queue::enqueue(int id, std::string *str) {
     bool flag = false;
     std::cout << "Testing initial enqueue " << std::endl;
-    if (top < size - 1) {
-        if(id > 0 && !str->empty()){
-            // pointer to data struct
-            Data *myData;
-            //allocate data structure
-            myData = new Data;
-            myData->id = (id);
-            myData->information = *str;
-            top = (top + 1) % size;
-            queue[++top] = myData;
-            flag = true;
-        }
+    if(!isFull() && (id > 0) && (!str->empty())){
+        //allocate data structure
+        back = (back + 1) % size;
+        queue[back] = new Data;
+        queue[back]->id = (id);
+        queue[back]->information = *str;
+        count++;
+        flag = true;
     }
     return flag;
 }
@@ -59,21 +58,21 @@ bool Queue::enqueue(int id, std::string *str) {
 bool Queue::dequeue(Data *ref) {
     bool flag = false;
     std::cout << "Testing initial dequeue " << std::endl;
-    if(!isEmpty()){     // if not empty
-        //getting info from top of stack and putting it in data struct
-        ref->id = queue[top]->id;
-        ref->information = queue[top]->information;
-        //delete allocated memory
-        delete queue[top];
-        //decrement stack
-        top = (top + 1) % size;
-        top--;
-        flag = true;
-    }else{
-        //fill passed data struct with -1, empty string
-        ref->id = -1;
-        ref->information = "";
-    }
+//    if(!isEmpty()){     // if not empty
+//        //getting info from top of stack and putting it in data struct
+//        ref->id = queue[top]->id;
+//        ref->information = queue[top]->information;
+//        //delete allocated memory
+//        delete queue[top];
+//        //decrement stack
+//        top = (top + 1) % size;
+//        top--;
+//        flag = true;
+//    }else{
+//        //fill passed data struct with -1, empty string
+//        ref->id = -1;
+//        ref->information = "";
+//    }
     return flag;
 }
 
@@ -83,8 +82,8 @@ bool Queue::peek(Data *ref) {
     bool peek = false;
     if(!isEmpty()){     // if not empty
         //getting info from top of stack and putting it in data struct
-        ref->id = queue[top]->id;
-        ref->information = queue[top]->information;
+        ref->id = queue[back]->id;
+        ref->information = queue[back]->information;
         //'return data to caller'
         peek = true;
     }else{
@@ -97,7 +96,17 @@ bool Queue::peek(Data *ref) {
 // Utility function to check if the queue is empty or not
 //ISEMPTY METHOD/FUNCTION
 bool Queue::isEmpty(){
-    return top < 0;
+    return count == 0;
 }
 
-// Utility function to return the size of the queue
+//full method
+bool Queue::isFull(){
+    return count == size;
+}
+
+//count
+int Queue::getCount(){
+    // count is internal and updated within insertEntry
+    return count;
+}
+
