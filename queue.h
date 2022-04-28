@@ -11,11 +11,28 @@
  * if you do need other things included, they would go here
  */
 
-#include "data.h"
+//#include "data.h"
 #define DEFAULT 2
 #include <iostream>   /* cout, endl */
 using std::cout;
 using std::endl;
+
+// From data.h
+#include <string>
+using std::string;
+struct Data {
+    int id;
+    string information;
+};
+
+
+//From functions.h
+#define MAXSTRSIZE 8
+#include <stdlib.h>   /* srand, rand */
+#include <time.h>     /* time */
+#include <time.h>     /* time */
+void rand_string(std::string*);
+bool is_positive_integer(char*);
 
 
 class Queue {
